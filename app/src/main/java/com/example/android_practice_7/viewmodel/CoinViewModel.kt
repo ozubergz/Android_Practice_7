@@ -14,7 +14,8 @@ class CoinViewModel : ViewModel() {
 
     private var coinRepository = CoinRepository
     private val _data = MutableLiveData<Result>()
-    val data : LiveData<Result> = _data
+    val data : LiveData<Result>
+        get() = _data
 
     fun fetchCoinsApi() {
         val call = coinRepository.fetchCoinsApi()
