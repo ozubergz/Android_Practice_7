@@ -1,6 +1,5 @@
 package com.example.android_practice_7.adapters
 
-import android.service.autofill.Dataset
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +8,7 @@ import com.example.android_practice_7.R
 import com.example.android_practice_7.data.remote.model.Coin
 import com.example.android_practice_7.databinding.CoinItemBinding
 
-class CoinAdapter(private val coins: List<Coin>) : RecyclerView.Adapter<CoinAdapter.CoinViewHolder>() {
+class CoinAdapter(private val coins: List<Coin>, private val listener: ClickListener) : RecyclerView.Adapter<CoinAdapter.CoinViewHolder>() {
 
     class CoinViewHolder(view : View) : RecyclerView.ViewHolder(view) {
         val binding = CoinItemBinding.bind(view)
@@ -23,7 +22,12 @@ class CoinAdapter(private val coins: List<Coin>) : RecyclerView.Adapter<CoinAdap
     override fun onBindViewHolder(holder: CoinViewHolder, position: Int) {
         val coin = coins[position]
         with(holder) {
-            binding.tvCoinName.text  = coin.name
+
+            binding.tvCoinSymbol.text  = coin.symbol
+
+            binding.root.setOnClickListener {
+                listener.itemClicked(coin)
+            }
         }
     }
 
