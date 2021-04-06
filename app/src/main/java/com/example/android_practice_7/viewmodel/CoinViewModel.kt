@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.android_practice_7.data.remote.model.Coin
 import com.example.android_practice_7.data.remote.model.Result
 import com.example.android_practice_7.repositories.CoinRepository
 import retrofit2.Call

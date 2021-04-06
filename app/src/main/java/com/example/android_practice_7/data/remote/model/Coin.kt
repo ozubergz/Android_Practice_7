@@ -1,10 +1,13 @@
 package com.example.android_practice_7.data.remote.model
 
 
+import android.os.Parcelable
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import kotlinx.parcelize.Parcelize
 
 @JsonClass(generateAdapter = true)
+@Parcelize
 data class Coin(
     val csupply: String,
     @Json(name = "id")
@@ -30,4 +33,4 @@ data class Coin(
     val tsupply: String?,
     val volume24: Double,
     val volume24a: Double
-)
+) : Parcelable

@@ -50,7 +50,7 @@ class CoinsFragment : Fragment(), ClickListener {
 
     override fun itemClicked(coin: Coin) {
         findNavController().navigate(
-            CoinsFragmentDirections.actionCoinsFragmentToCoinItemFragment()
+            CoinsFragmentDirections.actionCoinsFragmentToCoinItemFragment(coin)
         )
     }
 }

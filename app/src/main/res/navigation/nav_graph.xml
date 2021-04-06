@@ -16,7 +16,11 @@
     </fragment>
     <fragment
         android:id="@+id/coinItemFragment"
-        android:name="com.example.android_practice_7.CoinItemFragment"
+        android:name="com.example.android_practice_7.ui.CoinItemFragment"
         android:label="fragment_coin_item"
-        tools:layout="@layout/fragment_coin_item" />
+        tools:layout="@layout/fragment_coin_item" >
+        <argument
+            android:name="coin"
+            app:argType="com.example.android_practice_7.data.remote.model.Coin" />
+    </fragment>
 </navigation>
