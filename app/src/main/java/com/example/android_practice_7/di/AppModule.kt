@@ -1,10 +1,15 @@
 package com.example.android_practice_7.di
 
+import android.content.Context
+import androidx.room.Room
+import com.example.android_practice_7.data.local.CoinDatabase
 import com.example.android_practice_7.data.remote.CoinService
 import com.example.android_practice_7.other.Constants
+import com.example.android_practice_7.other.Constants.DATABASE_NAME
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -31,5 +36,18 @@ object AppModule {
         .client(client)
         .build()
         .create(CoinService::class.java)
+
+    @Singleton
+    @Provides
+    fun provideCoinDatabase(@ApplicationContext context: Context) : CoinDatabase =
+        Room.databaseBuilder(
+            context,
+            CoinDatabase::class.java,
+            DATABASE_NAME
+        ).build()
+
+    @Singleton
+    @Provides
+    fun provideCoinDao(coinDatabase: CoinDatabase) = coinDatabase.coinDao()
 
 }
