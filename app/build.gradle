@@ -40,6 +40,9 @@ android {
 
 dependencies {
 
+    // Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1'
+
     // For viewModels() extension function
     implementation "androidx.fragment:fragment-ktx:1.3.2"
 

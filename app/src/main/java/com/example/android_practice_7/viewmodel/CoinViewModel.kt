@@ -4,9 +4,12 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.android_practice_7.data.remote.model.Coin
 import com.example.android_practice_7.data.remote.model.Result
 import com.example.android_practice_7.repositories.CoinRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,15 +22,9 @@ class CoinViewModel : ViewModel() {
     val data : LiveData<Result> get() = _data
 
     fun fetchCoinsApi() {
-        val call = coinRepository.fetchCoinsApi()
-        call.enqueue(object : Callback<Result> {
-            override fun onResponse(call: Call<Result>, response: Response<Result>) {
-                _data.postValue(response.body())
-            }
-
-            override fun onFailure(call: Call<Result>, t: Throwable) {
-                Log.d("Call Failure", "onFailure: ${t.message}")
-            }
-        })
+        viewModelScope.launch(Dispatchers.IO) {
+            val response = coinRepository.fetchCoinsApi()
+            _data.postValue(response.body())
+        }
     }
 }
