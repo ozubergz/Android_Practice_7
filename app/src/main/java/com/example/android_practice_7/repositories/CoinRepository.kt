@@ -1,16 +1,16 @@
 package com.example.android_practice_7.repositories
 
-import com.example.android_practice_7.data.remote.RetrofitInstance
+import com.example.android_practice_7.data.remote.CoinService
 import com.example.android_practice_7.data.remote.model.Result
-import retrofit2.Call
 import retrofit2.Response
+import javax.inject.Inject
 
-object CoinRepository {
-
-    private val service = RetrofitInstance.service
+class CoinRepository @Inject constructor(
+    private val coinService: CoinService
+) {
 
     suspend fun fetchCoinsApi() : Response<Result> {
-        return service.fetchCoinsApi()
+        return coinService.fetchCoinsApi()
     }
 
 }

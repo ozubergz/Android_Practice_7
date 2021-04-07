@@ -10,7 +10,9 @@ import androidx.navigation.fragment.navArgs
 import com.example.android_practice_7.R
 import com.example.android_practice_7.databinding.FragmentCoinItemBinding
 import com.example.android_practice_7.viewmodel.CoinViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CoinItemFragment : Fragment() {
 
     private lateinit var binding: FragmentCoinItemBinding

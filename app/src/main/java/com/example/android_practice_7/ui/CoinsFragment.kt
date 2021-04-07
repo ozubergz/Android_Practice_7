@@ -16,8 +16,9 @@ import com.example.android_practice_7.adapters.CoinAdapter
 import com.example.android_practice_7.data.remote.model.Coin
 import com.example.android_practice_7.databinding.FragmentCoinsBinding
 import com.example.android_practice_7.viewmodel.CoinViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class CoinsFragment : Fragment(), ClickListener {
 
     private val viewModel : CoinViewModel by viewModels()
